@@ -1,0 +1,77 @@
+/* Professional Sidebar Navigation Styling */
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.navTitle {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  padding: 8px 12px 12px;
+  margin: 0;
+}
+
+.navButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.navButton:hover {
+  background: #f3f4f6;
+  color: #1e3a5f;
+}
+
+.navButtonActive {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(30, 58, 95, 0.3);
+}
+
+.navButtonActive:hover {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+  color: white;
+}
+
+.icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 12px 8px;
+}
+
+.sectionTitle {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+  padding: 16px 12px 8px;
+  margin: 0;
+}

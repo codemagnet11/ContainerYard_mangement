@@ -1,24 +1,29 @@
 import { useState } from "react";
 import styles from "./UserForm.module.css";
 
-export default function UserForm({ userData }) {
+export default function UserForm({ userData, onNew, onSave, onClose }) {
+  const initialFormData = {
+    user_id: "",
+    user_name: "",
+    password_hash: "",
+    user_type: "",
+    branch: "",
+    first_name: "",
+    last_name: "",
+    gender: "",
+    birth_date: "",
+    address: "",
+    pin_code: "",
+    contact_no: "",
+    email_id: "",
+    is_active: true,
+    created_date: "",
+    updated_date: "",
+  };
+
   const [formData, setFormData] = useState({
-    user_id: userData?.user_id || "",
-    user_name: userData?.user_name || "",
-    password_hash: userData?.password_hash || "",
-    user_type: userData?.user_type || "",
-    branch: userData?.branch || "",
-    first_name: userData?.first_name || "",
-    last_name: userData?.last_name || "",
-    gender: userData?.gender || "",
-    birth_date: userData?.birth_date || "",
-    address: userData?.address || "",
-    pin_code: userData?.pin_code || "",
-    contact_no: userData?.contact_no || "",
-    email_id: userData?.email_id || "",
-    is_active: userData?.is_active ?? true,
-    created_date: userData?.created_date || "",
-    updated_date: userData?.updated_date || "",
+    ...initialFormData,
+    ...(userData || {}),
   });
 
   const handleChange = (e) => {
@@ -29,13 +34,25 @@ export default function UserForm({ userData }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleNew = (e) => {
     e.preventDefault();
+    setFormData({ ...initialFormData });
+    if (onNew) onNew();
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    if (onSave) onSave(formData);
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    if (onClose) onClose();
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h2 className={styles.title}>Edit User</h2>
+    <form className={styles.form}>
+      <h2 className={styles.title}> User</h2>
 
       <div className={styles.readonlySection}>
         <div className={styles.field}>
@@ -276,8 +293,22 @@ export default function UserForm({ userData }) {
       </div>
 
       <div className={styles.actions}>
-        <button type="submit" className={styles.submitButton}>
-          Update User
+        <button type="button" onClick={handleNew} className={styles.newButton}>
+          NEW
+        </button>
+        <button
+          type="button"
+          onClick={handleSave}
+          className={styles.saveButton}
+        >
+          SAVE
+        </button>
+        <button
+          type="button"
+          onClick={handleClose}
+          className={styles.closeButton}
+        >
+          CLOSE
         </button>
       </div>
     </form>
